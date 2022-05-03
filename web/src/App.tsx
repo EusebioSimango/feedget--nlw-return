@@ -4,8 +4,9 @@ import { useState } from 'react'
 function App() {
 
   return (
-    <div className="App">
-      <button className="p-9">Ola mundo!</button>
+    <div className="flex gap-2">
+      <button className="bg-violet-500 p-2 rounded">Ola mundo!</button>
+      <button className="bg-violet-500 p-2 rounded">Ola mundo!</button>
     </div>
   )
 }
