@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button {
+	@apply bg-violet-500 p-2 rounded bg-violet-500 p-2 rounded;
+}
