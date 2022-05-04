@@ -5,3 +5,7 @@
 .button {
 	@apply bg-violet-500 p-2 rounded bg-violet-500 p-2 rounded;
 }
+
+body {
+	@apply bg-[#09090A] text-zinc-100;
+}
