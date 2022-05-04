@@ -11,7 +11,7 @@ export function Widget() {
 
 	return (
 		<div className="absolute bottom-5 right-5">
-			{isWidgetOpen && <p>Hello, World!</p>}
+			{isWidgetOpen && <p>Send your feedback!</p>}
 
 			<button onClick={toggleWidgetVisibilty} className="bg-brand-500 flex items-center rounded-full px-3 h-12 text-white group"> 
 				<ChatTeardropDots className="w-6 h-6" /> 
