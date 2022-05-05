@@ -1,5 +1,6 @@
 import { ChatTeardropDots } from 'phosphor-react'
 import { useState } from 'react'
+import { WidgetForm } from './WidgetForm'
 
 export function Widget() {
 
@@ -10,8 +11,8 @@ export function Widget() {
 	}
 
 	return (
-		<div className="absolute bottom-5 right-5">
-			{isWidgetOpen && <p>Send your feedback!</p>}
+		<div className="absolute bottom-4 right-4 md:bottom-10 md:right-10 flex flex-col items-end">
+			{isWidgetOpen && <WidgetForm />}
 
 			<button onClick={toggleWidgetVisibilty} className="bg-brand-500 flex items-center rounded-full px-3 h-12 text-white group"> 
 				<ChatTeardropDots className="w-6 h-6" /> 
