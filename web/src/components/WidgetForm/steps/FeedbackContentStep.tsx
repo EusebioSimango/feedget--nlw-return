@@ -11,8 +11,8 @@ export function FeedbackContentStep({ feedbackType }: FeedbackContentStepProps) 
   return (
     <>
       <header>
-        <span className="text-xl leading-6 flex">
-          <img className="flex-1 w-5 h-5 leading-6" src={feedbackTypeInfo.image.source} alt={feedbackTypeInfo.image.alt} />
+        <span className="text-xl leading-6 flex gap-2 items-center">
+          <img className="w-6 h-6 leading-6" src={feedbackTypeInfo.image.source} alt={feedbackTypeInfo.image.alt} />
           {feedbackTypeInfo.title}
         </span>
 
