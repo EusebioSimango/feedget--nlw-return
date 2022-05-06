@@ -15,7 +15,6 @@ export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProp
       </header>
       <div className="flex py-8 gap-2  w-full">
         {Object.entries(feedbackTypes).map(([key, value]) => {
-          console.log(key, ':', value)
           return (
             <button
               key={key}
