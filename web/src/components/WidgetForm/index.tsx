@@ -6,7 +6,7 @@ import bugImageUrl from './../../assets/bug.png'
 import ideaImageUrl from './../../assets/idea.png'
 import thoughtImageUrl from './../../assets/thought.png'
 import { FeedbackContentStep } from './steps/FeedbackContentStep'
-import { FeedbackSucessStep } from './steps/FeedbackSucessStep'
+import { FeedbackSuccessStep } from './steps/FeedbackSuccessStep'
 
 export const feedbackTypes = {
 	BUG: {
@@ -40,20 +40,24 @@ export function WidgetForm() {
 	const [feedbackSent, setFeedbackSent] = useState(false)
 
 	function handlerRestartFeedback() {
+		setFeedbackSent(false)
 		setFeedbackType(null)
 	}
 
 	return (
 		<div className="bg-zinc-900 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
 			{ feedbackSent ? ( 
-				<FeedbackSucessStep />
+				<FeedbackSuccessStep 
+					onFeedbackRestartRequested={handlerRestartFeedback}
+				/>
 				) : (
 					<> 
-					{!feedbackType 
-						? (
-						<FeedbackTypeStep 
-							onFeedbackSent={setFeedbackSent}
-							onFeedbackTypeChanged={setFeedbackType} />)
+						{!feedbackType 
+							? (
+							<FeedbackTypeStep 
+								onFeedbackSent={setFeedbackSent}
+								onFeedbackTypeChanged={setFeedbackType} />
+							)
 						: (
 							<FeedbackContentStep 
 							feedbackType={feedbackType}
