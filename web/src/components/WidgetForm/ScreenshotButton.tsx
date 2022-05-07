@@ -13,7 +13,6 @@ export function ScreenshotButton({
 	onScreenshotTook 
 }: FeedbackContentStepProps) {
 	const [isTakingScreenshot, setIsTakingScreenshot] = useState(false)
-	const [comment, setCommet] = useState<string>('')
 
 	async function handleTakeScreenshot () {
 		setIsTakingScreenshot(true)
