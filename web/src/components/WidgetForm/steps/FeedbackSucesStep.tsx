@@ -1,4 +1,4 @@
-export default function FeedbackSucesStep() {
+export function FeedbackSucesStep() {
 	return (
 		<div>
 			
