@@ -5,7 +5,7 @@ const app = express()
 
 app.use(express.json())
 
-app.post('feedbacks', (req, res) => {
+app.post('/feedbacks', (req, res) => {
 	console.log(req.body)
 
 	return res.send('Hello, World!')
