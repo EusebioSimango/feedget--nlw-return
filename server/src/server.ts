@@ -1,23 +1,27 @@
 import express from 'express'
 import { prisma } from './prisma'
-const PORT = 3333
+import nodemailer from 'nodemailer'
 
+const PORT = 3333
+// import cors from 'cors'
 const app = express()
+
+// app.use(cors())
 
 app.use(express.json())
 
 app.post('/feedbacks', async (req, res) => {
 	const { type, comment, screenshot } = req.body
 
-	await prisma.feedback.create({
+	const feedback = await prisma.feedback.create({
 		data: {
 			type,
 			comment,
 			screenshot
-		}
+		} 
 	})
 
-	return res.send('Hello, World!')
+	return res.status(201).json({ data: feedback })
 })
 
 app.get('/users', (req, res) => {
