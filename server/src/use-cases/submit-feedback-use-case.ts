@@ -1,4 +1,5 @@
 import { PrismaFeedbacksRepository } from '../repositories/prisma/prisma-feedbacks-repository'
+import { FeedbacksRepository } from '../repositories/feedbacks-repository'
 
 interface SubmitFeedbackUseCaseRequest {
 	type: string;
@@ -7,12 +8,13 @@ interface SubmitFeedbackUseCaseRequest {
 }
 
 export class SubmitFeedbackUseCase {
+	constructor(
+		private feedbacksRepository: FeedbacksRepository
+	) {}
 	async execute(request: SubmitFeedbackUseCaseRequest) {
 		const { type, comment, screenshot } = req.body
 
-		const prismaFeedbacksRepository = new PrismaFeedbacksRepository()
-
-		await prismaFeedbacksRepository.create({
+		await this.feedbacksRepository.create({
 			type,
 			comment,
 			screenshot,
