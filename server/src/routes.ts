@@ -1,7 +1,8 @@
 import express from 'express'
 import nodemailer from 'nodemailer'
 import { prisma } from './prisma'
-
+import { SubmitFeedbackUseCase } from './use-cases/submit-feedback-use-case'
+import { PrismaFeedbackRepository } from './repositories/prisma/prisma-feedback-repository'
 export const routes = express.Router()
 
 const transport = nodemailer.createTransport({
@@ -14,20 +15,29 @@ const transport = nodemailer.createTransport({
 })
 
 routes.post('/feedbacks', async (req, res) => {
+	
+	const { type, comment, screenshot } = req.body
 
-	const feedback = 
+	const prismaFeedbackRepository = new PrismaFeedbackRepository()
+	const submitFeedbackUseCase = new SubmitFeedbackUseCase(prismaFeedbackRepository)
 
-	await transport.sendMail({
-		from: 'Equipa Feedget <io@feedget.com>',
-		to: 'Eusebio Simango <eusebiosimango14@gmal.com>',
-		subject: 'Novo Feedbck',
-		html: [
-			`<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
-			`<p>Tipo dtransporto feedback: ${type}</p>`,
-			`<p>Comentário: ${comment}</p>`,
-			`</div>`,
-		].join('\n')
+	await submitFeedbackUseCase.execute({
+		type,
+		comment,
+		screenshot,
 	})
 
-	return res.status(201).json({ data: feedback })
+	// await transport.sendMail({
+	// 	from: 'Equipa Feedget <io@feedget.com>',
+	// 	to: 'Eusebio Simango <eusebiosimango14@gmal.com>',
+	// 	subject: 'Novo Feedbck',
+	// 	html: [
+	// 		`<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
+	// 		`<p>Tipo dtransporto feedback: ${type}</p>`,
+	// 		`<p>Comentário: ${comment}</p>`,
+	// 		`</div>`,
+	// 	].join('\n')
+	// })
+
+	return res.status(201).send()
 })
