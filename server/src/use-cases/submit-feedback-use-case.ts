@@ -23,7 +23,7 @@ export class SubmitFeedbackUseCase {
 			screenshot,
 		})
 
-		await this.mailAdapter({
+		await this.mailAdapter.sendMail({
 			subject:	'Novo Feedbck',
 			body: [
 				`<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
