@@ -2,7 +2,7 @@ import { ArrowLeft } from "phosphor-react"
 import { FeedbackType, feedbackTypes } from ".."
 import { CloseButton } from "../../CloseButton"
 import { ScreenshotButton } from "../ScreenshotButton"
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 
 interface FeedbackContentStepProps {
   feedbackType: FeedbackType;
