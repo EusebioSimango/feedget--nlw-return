@@ -13,7 +13,7 @@ export class SubmitFeedbackUseCase {
 		private feedbacksRepository: FeedbacksRepository,
 		private mailAdapter: MailAdapter,
 
-	) {}
+	) { }
 	async execute(request: SubmitFeedbackUseCaseRequest) {
 		const { type, comment, screenshot } = request
 
@@ -21,7 +21,7 @@ export class SubmitFeedbackUseCase {
 
 		if (!comment) throw new Error('comment is required.')
 
-		if (screenshot && !screenshot.startsWith('data:image/png:;base64')) {
+		if (screenshot && !screenshot.startsWith('data:image/png:base64')) {
 			throw new Error('Invalid screenshot format.')
 		}
 
@@ -32,7 +32,7 @@ export class SubmitFeedbackUseCase {
 		})
 
 		await this.mailAdapter.sendMail({
-			subject:	'Novo Feedbck',
+			subject: 'Novo Feedbck',
 			body: [
 				`<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
 				`<p>Tipo dtransporto feedback: ${type}</p>`,
